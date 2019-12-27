@@ -903,11 +903,18 @@ Ejemplo de uso:
 
 Definir el origen de un elemento
 ********************************
-Lo hacemos con la regla ``transform-origin``:
+El origen desde donde se realiza la transformación lo definimos con la regla ``transform-origin`` y posee las siguientes coordenadas:
+
+* Izquierda: 0%
+* Centro: 50%
+* Derecha: 100%
+* Arriba: 0% 0%
+* Centro absoluto: 50% 50%
+* Abajo: 0% 100%
 
 .. code:: css
 
-    tramsform-origin: 0;
+    tramsform-origin: 20%;
     
 
 Definir como se muestran los elementos

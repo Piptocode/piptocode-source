@@ -24,7 +24,6 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     
     manuals/languages/scratch
     manuals/languages/sonicpi
-    manuals/languages/wolfram
     manuals/languages/python
     manuals/languages/javascript
     manuals/languages/typescript
