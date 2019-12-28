@@ -919,7 +919,7 @@ El origen desde donde se realiza la transformación lo definimos con la regla ``
 
 Definir como se muestran los elementos
 ######################################
-Con la regla ``display`` podemos definir como se muestran un elemento o los elementos internos:
+Con la regla ``display`` podemos definir como se muestran el elemento seleccionado:
 
     * block: Se muestra el elemento como un bloque
     * inline: Se muestra el elemento en línea
@@ -935,9 +935,28 @@ Ejemplo de uso:
         display: block;
     }
 
-Flexbox: Centrar elementos horizontalmente
-******************************************
-Para centrar elementos de forma horizontal utilizamos la regla ``justify-content`` y asignamos uno de los siguientes atributos:
+Flexbox: Especificar la posición de los elementos
+*************************************************
+Podemos especificar como se presentarán los elementos dentro de un contenedor div con la regla ``flex-direction`` que posee los siguientes atributos:
+
+* row (por defecto): Los elementos internos del div se van posicionando a la derecha.
+* row-reverse (por defecto): Los elementos internos del div se van posicionando a la izquierda.
+* column: Los elementos internos del div se van mostrando de arriba hacia abajo.
+* column-reverse: Los elementos internos del div se van mostrando de abajo hacia arriba.
+
+Ejemplo de uso:
+
+.. code:: css
+
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+Flexbox: Mover elementos internos de izquierda a derecha
+********************************************************
+Para mover los elementos que se encuentran dentro de un contenedor de izquierda a derecha utilizamos la regla ``justify-content`` y asignamos uno de los siguientes atributos:
 
 * start: Los elementos se juntan en la izquierda.
 * center: Los elementos se juntan en el centro.
@@ -953,9 +972,9 @@ Ejemplo:
         justify-content: center;
     }
 
-Flexbox: Centrar elementos vertical
-***********************************
-Para centrar elementos de forma vertical utilizamos la regla ``align-items`` con los siguientes atributos:
+Flexbox: Mover elementos internos de arriba a abajo
+***************************************************
+Para mover los elementos que se encuentran dentro de un contenedor de arriba a abajo utilizamos la regla ``align-items`` con los siguientes atributos:
 
 * stretch: los elementos rellenan todo el espacio posible de arriba hacia abajo.
 * center: los elementos se juntan todos en el centro.

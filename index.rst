@@ -28,7 +28,6 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     manuals/languages/javascript
     manuals/languages/typescript
     manuals/languages/csharp
-    manuals/languages/php
     manuals/languages/sql
     manuals/languages/c
     manuals/languages/arduino
@@ -44,9 +43,7 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     manuals/frameworks/jquery
     manuals/frameworks/nodejs
     manuals/frameworks/angular
-    manuals/frameworks/wordpress
     manuals/frameworks/cordova
-    manuals/frameworks/electron
     manuals/frameworks/ionic
     manuals/frameworks/phaserjs
     manuals/frameworks/unity
