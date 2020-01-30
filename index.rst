@@ -22,15 +22,11 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     :maxdepth: 2
     :caption: Lenguajes de Programación:
     
-    manuals/languages/scratch
-    manuals/languages/sonicpi
     manuals/languages/python
     manuals/languages/javascript
-    manuals/languages/typescript
     manuals/languages/csharp
     manuals/languages/sql
     manuals/languages/c
-    manuals/languages/arduino
 
 .. toctree::
     :maxdepth: 2
@@ -38,15 +34,10 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
 
     manuals/frameworks/django
     manuals/frameworks/djangorest
-    manuals/frameworks/materialize
-    manuals/frameworks/bootstrap
-    manuals/frameworks/jquery
     manuals/frameworks/nodejs
-    manuals/frameworks/angular
     manuals/frameworks/cordova
-    manuals/frameworks/ionic
-    manuals/frameworks/phaserjs
     manuals/frameworks/unity
+    manuals/languages/arduino
 
 .. toctree::
     :maxdepth: 2
