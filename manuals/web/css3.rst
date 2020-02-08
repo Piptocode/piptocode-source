@@ -413,6 +413,50 @@ También podemos definir el estilo de línea divisora entre columnas y el grosor
         columns-rule-width: 3px
     }
 
+Ajustar ancho y alto 
+####################
+
+Ancho
+*****
+El ancho se define con la regla ``width`` y podemos trabajar con porcentajes (%) o pixels (px), también existen reglas para definir el ancho mínimo de un elemento con la regla ``min-width`` y el ancho máximo permitido con ``max-width``:
+
+ejemplo:
+
+.. code:: css
+
+    div{
+        width: 100%;
+    }
+
+    div{
+        min-width: 150px;
+    }
+
+    div{
+        max-width: 400px;
+    }
+    
+Alto
+****
+Para el alto tenemos la regla ``height`` con sus respectivos ``min-height`` y ``max-height`` para valores precisos:
+
+ejemplo:
+
+.. code:: css
+
+    div{
+        height: 100%;
+    }
+
+    div{
+        min-height: 150px;
+    }
+
+    div{
+        max-height: 400px;
+    }
+
+
 Modelo de caja en CSS
 #####################
 El modelo de caja en CSS es aquel espacio en el que se puede trabajar su tamaño y espacio.
@@ -830,7 +874,11 @@ Cuanto mayor es el número más al frente se muestra.
 
 Limite visible de los elementos hijos
 *************************************
-Podemos limitar la visibilidad de un elemento hijo cuando este se muestre por fuera con ``overflow: hidden``:
+Podemos limitar la visibilidad de un elemento hijo cuando este se muestre por fuera con ``overflow``:
+
+* visible: el contenido es visible aunque sobrepase el contenedor padre.
+* hidden: Oculta los elementos que sobrepasan el contenedor padre.
+* scroll: similar a hidden pero nos aparece una barra de desplazamiento lateral para ver los elementos ocultos.
 
 Ejemplo de uso:
 
@@ -991,6 +1039,23 @@ Ejemplo:
     }
 
 La regla ``align-self`` funciona del mismo modo pero con un solo elemento.
+
+Flexbox: Controlar salto de línea en hijos
+******************************************
+Existe una regla llamada `flex-wrap` que se utiliza para controlar el comportamiento de flexbox en sus hijos para permanecer todos en la misma línea o hacer un salto automático:
+
+* nowrap: los elementos permanecerán en la misma línea aunque sobrepasen el contenedor padre.
+* wrap: los elementos al llegar al límite del contenedor padre irán saltando abajo.
+* wrap-reverse: lo mismo que wrap pero a la inversa.
+
+Ejemplos:
+
+.. code:: css
+
+    div {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
 Diseño responsivo
 #################
