@@ -440,6 +440,18 @@ Las listas son un tipo de dato mutable que agrupa un conjuto de valores de disti
     lista = list(numeros)
     print(lista)
 
+* Ordenar elementos de listas por orden numérico o alfabético:
+
+.. code:: python
+
+    lista = ["gato", "nocilla", "avión", "leche"]
+    
+    # Orden normal:
+    print(sorted(lista))
+
+    # Orden inverso:
+    print(sorted(lista, reverse=True))
+
 Tuplas
 ******
 Las tuplas son similiares a las listas pero con la diferencia de que estas son inmutables.
@@ -498,6 +510,18 @@ Ejemplo de lista:
     lista = [10, "hola", 3.43]
     tupla = tuple(lista)
     print(tupla)
+
+* Ordenar elementos de tuplas por orden numérico o alfabético:
+
+.. code:: python
+
+    tupla = (9, 2, 3, 5, 1)
+    
+    # Orden normal:
+    print(sorted(tupla))
+
+    # Orden inverso:
+    print(sorted(tupla, reverse=True))
 
 Diccionarios
 ************
@@ -692,6 +716,16 @@ Las funciones en Python se declaran con ``def`` en lugar de ``function`` como en
     # y llamamos a la función pasándole la variable nombre:
     saludar(nombre)
 
+* Recibir parametros infinitos añadiendo ``*`` a un parametro:
+
+    .. code:: python
+
+        def miFuncion(*unNombre):
+        for persona in unNombre:
+            print("Se llama {}".format(persona))
+
+        miFuncion("Pepe", "Antonio", "Alfredo")
+
 Clases
 ######
 Las clases en python tienen una estructura similar al de otros lenguajes,
@@ -728,9 +762,6 @@ pasarlo a los métodos que vayan a utilizar atributos de la clase (osea practica
 
 .. code:: python
 
-    #!/usr/bin/env python
-    #_*_ coding: utf8 _*_
-
     class Persona():
             nombre = ""
             genero = ""
@@ -750,6 +781,21 @@ pasarlo a los métodos que vayan a utilizar atributos de la clase (osea practica
     antonio = Persona('Antonio', 'Masculino' ,79, 168)
 
     antonio.datos()
+
+* Para heredar una clase en python lo hacemos como en la mayoría de lenguajes:
+
+.. code:: python
+
+    class Luis(Persona):
+        def __init__(self):
+            self.nombre = "Luis"
+            self.genero = "Masculino"
+            self.peso = 79
+            self.estatura = 158
+
+    luis = Luis()
+    # y podemos acceder a los metodos del padre como a sus atributos:
+    luis.datos()
 
 Manejo de errores
 #################
