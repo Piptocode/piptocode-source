@@ -39,6 +39,7 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     manuals/frameworks/djangorest
     manuals/frameworks/flutter
     manuals/frameworks/unity
+    manuals/frameworks/wordpress
 
 .. toctree::
     :maxdepth: 2

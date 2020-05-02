@@ -954,4 +954,4 @@ Cuando abrimos un archivo en python siempre asignamos un permiso:
     archivo.write('\n')
     archivo.write('linea adicional')
 
-    archivo.close()
+    archivo.close() 
