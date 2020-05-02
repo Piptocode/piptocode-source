@@ -23,10 +23,13 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     :caption: Lenguajes de Programación:
     
     manuals/languages/python
+    manuals/languages/php
     manuals/languages/javascript
-    manuals/languages/csharp
-    manuals/languages/sql
     manuals/languages/c
+    manuals/languages/cpp
+    manuals/languages/csharp
+    manuals/languages/dart
+    manuals/languages/sql
 
 .. toctree::
     :maxdepth: 2
@@ -34,10 +37,8 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
 
     manuals/frameworks/django
     manuals/frameworks/djangorest
-    manuals/frameworks/nodejs
-    manuals/frameworks/cordova
+    manuals/frameworks/flutter
     manuals/frameworks/unity
-    manuals/languages/arduino
 
 .. toctree::
     :maxdepth: 2
@@ -45,12 +46,10 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
 
     manuals/computer/raspberry
     manuals/computer/arduinouno
+    manuals/computer/arduboy
     manuals/computer/git
     manuals/computer/linux
-    manuals/computer/arduboy
-    manuals/computer/beaglebone
     manuals/computer/microbit
-    manuals/computer/odroidgo
   
 
 Indices and tables

@@ -22,7 +22,7 @@ Para ejecutar Javascript desde la web tenemos que implementarlo en la página ut
 
 Esta etiqueta la añadimos preferentemente por motivos de rendimiento justo antes de la etiqueta de cierre del ``<body>``.
 
-.. code:: html
+.. code:: html 
 
     <!DOCTYPE html>
     <html lang="en">

@@ -452,6 +452,15 @@ Las listas son un tipo de dato mutable que agrupa un conjuto de valores de disti
     # Orden inverso:
     print(sorted(lista, reverse=True))
 
+* Verificar si se encuentra un elemento en la lista:
+
+.. code:: python
+
+    lista = ["gato", "nocilla", "avión", "leche"]
+
+    'gato' in lista // esto devuelve true o false dependiendo de si la cadena existe o no en la lista.
+    'perro' not in lista // igual que antes pero preguntando si no existe
+
 Tuplas
 ******
 Las tuplas son similiares a las listas pero con la diferencia de que estas son inmutables.
@@ -564,7 +573,7 @@ Ejemplo de uso:
 
 * Recuperar solo los valores del diccionario con ``values()``:
 
-.. code:: python
+.. code:: python 
 
     valores = diccionario.values()
     print(valores)

@@ -1,6 +1,6 @@
 =====
 HTML5
-=====
+===== 
 
 .. image:: /logos/logo-html5.png
     :scale: 25%
