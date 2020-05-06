@@ -12,7 +12,7 @@ Python 3
 
 Última edición el día |date| a las |time|.
 
-Esta es la documentación que he recopilado para trabajar con JavaScript, el lenguaje de la web que se ha expandido considerablemente desde hace unos años.
+Esta es la documentación que he recopilado para trabajar con Python 3, el lenguaje de propósito general que me gusta utilizar en mis proyectos y en mi trabajo del día a dia.
 
 .. contents:: Índice
 
@@ -358,6 +358,21 @@ Ejemplo:
             print('Acertaste!')
             juego = False
 
+Ejemplo con bucle infinito:
+
+.. code:: python
+
+    numero = 10
+    # al añadir True hacemos un bucle infinito:
+    while True:
+        adivina = int(input('Adivinia el número >> '))
+
+        if adivina == numero:
+            print('Acertaste!')
+            // Con exit() finalizamos el programa
+            exit()
+
+        print('Fallaste!')
 
 Estructuras de datos
 ####################
