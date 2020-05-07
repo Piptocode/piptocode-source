@@ -67,6 +67,14 @@ El comando para compilar un programa en C con GCC es ``gcc -o nombre script.c``
 
 La compilación nos devolverá un programa llamado ``hola`` que ejecutamos en Linux como ``./hola``
 
+Preparación del script
+**********************
+Cuando programamos en C la primera línea que escribimos siempre es la importación de la librería principal:
+
+.. code:: c 
+
+    #include <stdio.h>
+
 Palabras reservadas de C
 ************************
 En C existen las siguientes palabras reservadas:
@@ -277,12 +285,12 @@ Los operadores aritméticos que se presentan en C son los siguientes,
 
 Estos podemos utilizarlos del siguiente modo:
 
-.. code:: python
+.. code:: c
 
-    # asignación:
+    // asignación:
     int suma = 2 + 2;
 
-    # salida de datos:
+    // salida de datos:
     printf("%d\n", 3-2);
 
 
@@ -311,10 +319,10 @@ Cuando hablamos del uso de un solo ``=`` nos referimos a la asignación de un va
 Como en muchos lenguajes, si imprimimos por consola la relación entre un valor y otro el resultado será 0 o 1 (false o true):
 
 .. code:: c
-
-    # Si decimos que 3 es mayor que 2 
-    printf("%i\n", 3>2);
-    # el resultado que sale por consola es 1 (o sea positivo o true).
+    // comparamos un valor en una variable tipo booleana:
+    bool num = 3 < 2;
+    // imprimimos el resultado que será 0 o 1:
+    cout << num << endl;
 
 Operadores de Incremento
 ************************
