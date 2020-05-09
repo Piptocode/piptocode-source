@@ -368,7 +368,7 @@ Ejemplo con bucle infinito:
         adivina = int(input('Adivinia el número >> '))
 
         if adivina == numero:
-            print('Acertaste!')
+            print('Acertaste!') 
             // Con exit() finalizamos el programa
             exit()
 

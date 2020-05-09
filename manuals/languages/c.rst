@@ -319,6 +319,7 @@ Cuando hablamos del uso de un solo ``=`` nos referimos a la asignación de un va
 Como en muchos lenguajes, si imprimimos por consola la relación entre un valor y otro el resultado será 0 o 1 (false o true):
 
 .. code:: c
+
     // comparamos un valor en una variable tipo booleana:
     bool num = 3 < 2;
     // imprimimos el resultado que será 0 o 1:
@@ -855,7 +856,7 @@ Para actualizar un archivo existente sin destruir la información que ya posee u
 Si ejecutamos este codigo varias veces veremos como se incluyen nuevas líneas a nuestro script.
 
 Empaquetado y Preprocesamiento
-######################################
+##############################
 
 Crear paquetes
 **************
@@ -904,4 +905,4 @@ El archivo de intercambio que creamos antes llamado ``funcion.h`` es un archivo 
     }
 
 .. important::
-    Es necesario ejecutar la compilación de ambos al mismo tiempo igualmente
+    Es necesario ejecutar la compilación de ambos al mismo tiempo igualmente 

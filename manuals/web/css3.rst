@@ -14,7 +14,7 @@ CSS3
 
 Esta es la documentación que he recopilado para trabajar con CSS3, un lenguaje de creación de estilos en cascada.
 
-.. contents:: Índice
+.. contents:: Índice 
 
 Funcionamiento de CSS
 #####################
@@ -412,7 +412,7 @@ También podemos definir el estilo de línea divisora entre columnas y el grosor
         columns-rule-style: dashed;
         columns-rule-width: 3px
     }
-
+    
 Ajustar ancho y alto 
 ####################
 

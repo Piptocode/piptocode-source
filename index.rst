@@ -23,7 +23,6 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     :caption: Lenguajes de Programación:
     
     manuals/languages/python
-    manuals/languages/php
     manuals/languages/javascript
     manuals/languages/c
     manuals/languages/cpp
@@ -39,7 +38,6 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     manuals/frameworks/djangorest
     manuals/frameworks/flutter
     manuals/frameworks/unity
-    manuals/frameworks/wordpress
 
 .. toctree::
     :maxdepth: 2

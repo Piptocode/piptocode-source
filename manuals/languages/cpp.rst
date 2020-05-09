@@ -66,7 +66,7 @@ Para compilar un script en C++ debemos instalar un compilador, yo personalmente 
 
 Lo siguiente será compilar la aplicación ejecutando: ``g++ -o hola hola-mundo.cpp``
 
-Y ya podemos ejecutarlo del siguiente modo: ``./hola``
+Y ya podemos ejecutarlo del siguiente modo: ``./hola`` 
 
 Preparación del script 
 **********************

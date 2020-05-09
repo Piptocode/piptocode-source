@@ -15,7 +15,7 @@ HTML5
 Esta es la documentación que he recopilado para trabajar con HTML5, HyperText Markup Language que se utiliza para crear la estructura de un sitio web.
 
 .. contents:: Índice
-
+ 
 Sintaxis HTML5
 ##############
 HTML5 se basa en el uso de etiquetas definidas para cada función como cabeceras, párrafos, contenedores, imágenes, videos, enlaces...
