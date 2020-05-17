@@ -29,7 +29,7 @@ Hay dos tipos de listado que podemos definir:
 
 * Listado por puntos:
 
-.. code-block:: 
+.. code-block:: python 
 
     * Elemento 1
         * subelemento
@@ -44,7 +44,7 @@ Ejemplo:
 
 * Listado numerico:
 
-.. code-block::
+.. code-block:: python
 
     #. Un elemento
         #. Subelemento
@@ -57,7 +57,7 @@ Ejemplo:
 
 * Listado vacio:
 
-.. code-block::
+.. code-block:: python
     
     | Un elemento
     | otro elemento
@@ -69,7 +69,7 @@ Ejemplo:
 
 * Listado horizontal:
 
-.. code-block::
+.. code-block:: python
 
     .. hlist::
         :columns: 3
@@ -96,7 +96,7 @@ Bloque Literal
 
 Un bloque literal es un bloque que se encuentra más desplazado a la derecha y se presenta con un título destacado:
 
-.. code-block::
+.. code-block:: python
 
     Esto es un texto normal. Lo siguiente es un bloque literal::
         Esto es un texto literal,
@@ -117,7 +117,7 @@ Línea de código
 
 Es un bloque que tiene un prompt de estilo consola de python:
 
-.. code-block::
+.. code-block:: python
 
     >>> Y aqui tenemos un codigo con prompt
 
@@ -132,7 +132,7 @@ Hay dos formas comunes de crear una tabla:
 
 * Completa:
 
-.. code-block::
+.. code-block:: python
 
     +--------------------+---------------+----------------+
     | Cabecera 1         | Cabecera 2    | Cabecera 3     |
@@ -156,7 +156,7 @@ Ejemplo:
 
 * Sencilla:
 
-.. code-block::
+.. code-block:: python
 
     ===== =====
     A      B
@@ -181,9 +181,7 @@ Links
 
 Para crear un enlace podemos utilizar el siguiente código:
 
-.. code-block::
-
-    Enlaces, para ir a google `aquí <https://google.es>`_.
+``Enlaces, para ir a google `aquí <https://google.es>`_.``
 
 Ejemplo:
 
@@ -194,28 +192,28 @@ Encabezados
 
 * Encabezado sección:
 
-.. code-block::
+.. code-block:: python
 
     =======================
     Encabezado para sección
     =======================
 
-.. code-block::
+.. code-block:: python
 
     Encabezado para partes
     ######################
 
-.. code-block::
+.. code-block:: python
 
     Encabezado para capitulos
     *************************
 
-.. code-block::
+.. code-block:: python
 
     Encabezado para subsecciones
     ----------------------------
 
-.. code-block::
+.. code-block:: python
 
     para parrafos
     """""""""""""
@@ -227,7 +225,7 @@ Campos destacados
 
 son textos que podemos desctacar con : : y luego añadirles una descripción
 
-.. code-block::
+.. code-block:: python
 
     :campo: Texto del campo
 
@@ -242,7 +240,7 @@ Podemos mostrar distintos mensajes de alerta entre otras cosas para los lectores
 
 * Atención:
 
-.. code-block::
+.. code-block:: python
 
     .. attention::
         Texto de atención
@@ -254,7 +252,7 @@ Ejemplo:
 
 * Precaución:
 
-.. code-block::
+.. code-block:: python
 
     .. caution::
         Texto de cuidado
@@ -266,7 +264,7 @@ Ejemplo:
 
 * Peligro:
 
-.. code-block::
+.. code-block:: python
 
     .. danger::
         Texto de peligro
@@ -278,7 +276,7 @@ Ejemplo:
 
 * Error:
 
-.. code-block::
+.. code-block:: python
 
     .. error::
         Texto de error
@@ -290,7 +288,7 @@ Ejemplo:
 
 * Sugerencia:
 
-.. code-block::
+.. code-block:: python
 
     .. hint::
         Texto de sugerencia
@@ -302,7 +300,7 @@ Ejemplo:
 
 * Importante:
 
-.. code-block::
+.. code-block:: python
 
     .. important::
         Texto de importante
@@ -314,7 +312,7 @@ Ejemplo:
 
 * Nota: 
 
-.. code-block::
+.. code-block:: python
 
     .. note::
         Texto de nota
@@ -326,7 +324,7 @@ Ejemplo:
 
 * Truco:
 
-.. code-block::
+.. code-block:: python
 
     .. tip::
         Texto de consejo
@@ -338,7 +336,7 @@ Ejemplo:
 
 * Peligro: 
 
-.. code-block::
+.. code-block:: python
 
     .. warning::
         Texto de alerta
@@ -353,7 +351,7 @@ Imágenes
 
 Podemos cargar imágenes y ajustarlas a nuestro gusto:
 
-.. code-block::
+.. code-block:: python
 
     .. image:: picture.jpg
         :height: 100px
@@ -376,7 +374,7 @@ Entrada
 
 Similar a la entrada de un blog o una red social
 
-.. code-block::
+.. code-block:: python
 
     .. topic:: Topic Title
 
@@ -398,7 +396,7 @@ Barra Lateral
 
 Una barra lateral a la derecha donde poner texto entre otras cosas
 
-.. code-block::
+.. code-block:: python
 
     .. sidebar:: Sidebar Title
         :subtitle: Optional Sidebar Subtitle
@@ -421,7 +419,7 @@ Bloque de texto
 
 Un bloque de texto es un texto que esta más desplazado a la derecha:
 
-.. code-block::
+.. code-block:: python
 
     .. line-block::
 
@@ -448,9 +446,9 @@ En un bloque de código podemos escribir el código de nuestros programas y pode
 
 * De forma sencilla:
 
-.. code-block::
+.. code-block:: python
 
-    .. code-block:: 
+    .. code-block:: python 
 
         def my_function():
             "just a test"
@@ -458,7 +456,7 @@ En un bloque de código podemos escribir el código de nuestros programas y pode
 
 Ejemplo:
 
-.. code-block:: 
+.. code-block:: python 
 
     def my_function():
         "just a test"
@@ -466,7 +464,7 @@ Ejemplo:
 
 * Para un lenguaje de programación conocido:
 
-.. code-block::
+.. code-block:: python
 
     .. code:: python
 
@@ -484,7 +482,7 @@ Ejemplo:
 
 * Combinado con un texto explicativo:
 
-.. code-block::
+.. code-block:: python
 
     .. compound::
 
@@ -510,7 +508,7 @@ Ejemplo:
 
 * Bloque de código numerado:
 
-.. code-block::
+.. code-block:: python
 
     .. code-block:: javascript
         :linenos:
@@ -530,7 +528,7 @@ Ejemplo:
 
 Comenzar a partir de cierto número definido y poner nombre al archivo:
 
-.. code-block::
+.. code-block:: python
 
     .. code-block:: python
         :caption: this.py
@@ -570,29 +568,12 @@ Ejemplo:
         print 'This one is not...'
         print '...but this one is.'
 
-Fórmulas matemáticas
-####################
-
-Estilo definido para formulas matemáticas.
-
-.. code-block::
-
-    .. math::
-
-        α_t(i) = P(O_1, O_2, … O_t, q_t = S_i λ)
-
-Ejemplo:
-
-.. math::
-
-    α_t(i) = P(O_1, O_2, … O_t, q_t = S_i λ)
-
 Epígrafe
 ########
 
 Introducir epígrafes en la página
 
-.. code-block::
+.. code-block:: python
 
     .. epigraph::
 
@@ -616,13 +597,13 @@ y la va organizando de forma jerárquica
 
 * Índice normal:
 
-    .. code-block::
+    .. code-block:: python
 
         .. contents:: Tabla de contenidos
 
 * Índice abreviado:
 
-    .. code-block::
+    .. code-block:: python
 
         .. contents:: Tabla reducida
             :depth: 2
@@ -634,7 +615,7 @@ Meta data
 
 Genera etiquetas de meta data para la cabecera del documento html final:
 
-.. code-block::
+.. code-block:: python
 
     .. meta::
         :description: The reStructuredText plaintext markup language
@@ -649,7 +630,7 @@ Fecha y hora
 
 Crea un registro de la fecha y hora a la que se ha guardado el documento:
 
-.. code-block::
+.. code-block:: python
 
     .. |date| date::
     .. |time| date:: %H:%M
@@ -672,7 +653,7 @@ Clase destacada
 
 Crea una clase especial que será reflejada en el índice:
 
-.. code-block::
+.. code-block:: python
 
     .. class:: special
 
@@ -686,7 +667,7 @@ Ejemplo:
 
 También existe la clase excepcional que no va indexada:
 
-.. code-block::
+.. code-block:: python
 
     .. class:: exceptional remarkable
 
@@ -707,7 +688,7 @@ Ejemplo:
 
 Crea una referencia a una clase y la indexa automáticamente:
 
-    .. code-block::
+    .. code-block:: python
 
         .. class:: multiple
 
@@ -728,7 +709,7 @@ Menu de documentos
 
 Crea un menú que enlaza a otros documentos:
 
-.. code-block::
+.. code-block:: python
 
     .. toctree::
         :maxdepth: 2
@@ -743,7 +724,7 @@ Versiones
 
 Define las versiones de la documentación expuesta:
 
-.. code-block::
+.. code-block:: python
 
     .. versionadded:: 2.5
 
@@ -764,7 +745,7 @@ Título
 
 Crea un simple y sencillo título pequeño:
 
-..code-block::
+..code-block:: python
 
     .. rubric:: title
 
@@ -774,7 +755,7 @@ Ejemplo:
 
 También existe la versión algo más centrada y detallada:
 
-.. code-block::
+.. code-block:: python
 
     .. centered:: LICENSE AGREEMENT
 
@@ -788,7 +769,7 @@ Crear un glosario
 
 Crea tu propio glosario de palabras que se añadirán al index cuando se compile la web:
 
-.. code-block::
+.. code-block:: python
 
     .. glossary::
 
