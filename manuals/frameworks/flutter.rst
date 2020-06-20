@@ -132,8 +132,656 @@ Una vez escrito el código podemos ejecutar el emulador o reiniciarlo en caso de
 .. hint:: 
     Tenemos un snippet para crear la primera pantalla de flutter que lo genera todo, se ejecuta cuando el archivo mainl.dart esta en blanco escribiendo la palabra ``mateApp`` y pulsando la tecla **intro***
 
+Elementos que tiene MaterialApp():
+
+* debugShowCheckedModeBanner: true por defecto, muestra una banda roja en la esquina superior derecha. **false** para eliminarla
+* home: devuelve la pantalla principal, en su lugar podemos mostrar distintos scaffolds importados de otros archivos a través de un Widget Center().
+
+
 Separar la lógica en varios archivos
 ************************************
 Para tener una buena lectura del código es necesario seguir una estructura de directorios y archivos donde podamos separar las distintas páginas y componentes que se agrupan en Flutter:
 
-PROXIMAMENTE...
+* Primero nos situamos dentro de la carpeta **lib** y creamos un nuevo **package** al que llamaremos **src**.
+
+Ahora podemos ir incluyendo en esta carpeta los distintos elementos de nuestro proyecto.
+
+Primera APP en Flutter
+######################
+Vamos a crear de nuevo la primera app que nos muestra flutter.
+
+Scaffold
+********
+El Scaffold como ya hemos dicho antes define el fondo de nuestra pantalla, de modo que tenemos que definirlo en cada una de las pantallas que vayamos creando.
+
+Pociciones de un Scaffold:
+
+* appBar: Barra menú superior.
+* body: Cuerpo de la pantalla.
+* floatingActionButton: Botón emergente que suele mostrarse abajo a la derecha por defecto.
+* floatingActionButtonLocation: Establece la posición del botón flotante. Ejemplo: ``floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat``
+
+Ejemplo de Scaffold:
+
+* Creamos un package en **src** llamado **pages** y dentro de esta nueva carpeta creamos el archivo **home_page.dart** y escribimos lo siguiente:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+
+    // Creamos un widget que usaremos como pantalla
+    class HomePage extends StatelessWidget{
+
+        // Sobreescribimos el método build para crear la pantalla:
+        @override
+        // El widget principal siempre es build y recibe en el context la referencia de todos los widgets:
+        Widget build(BuildContext context){
+            // Y retornamos un widget llamado scaffold:
+            return Scaffold(
+                appBar: AppBar( // Recibiremos una barra superior en appbar
+                    title: Text("Título"), // El title recibirá un widget de tipo texto.
+                ),
+                body: Center( // Y tambien body recibiremos un contenedor centrado.
+                    child: Text("hola mundo"), // dentro añadimos un texto.
+                ),
+            );
+        }
+    }
+
+* Para hacer funcionar esta página la tenemos que cargar desde main.dart:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    // importamos el archivo donde hemos escrito el scaffold:
+    import 'package:flutterapp/src/pages/home_page.dart';
+
+    void main(){
+        runApp(new MyApp());
+    }
+
+    class MyApp extends StatelessWidget{
+        @override
+        build(context){
+            return MaterialApp(
+                home: Center(
+                // ahora dentro del Center podemos cargar la pantalla que hemos creado:
+                child: HomePage(),
+                )
+            );
+        }
+    }
+
+Y así tenemos listo un scaffold.
+
+Columnas
+********
+En Flutter podemos crear disposiciones por columnas (de arriba abajo), para ello utilizamos el widget **Column**.
+
+Este contiene las siguientes características:
+* mainAxisAligment: Sirve para alinear horizontalmente los elementos que veremos.
+* children: es el lugar donde colocaremos los widgets cargados siempre en una matriz de widgets. 
+
+Ejemplo de uso:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+
+    class HomePage extends StatelessWidget{
+
+    @override
+    Widget build(BuildContext context){
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Título"),
+                ),
+                body: Center(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                        Text('Hola', style: TextStyle(fontSize: 25)),
+                        ],
+                    ),
+                ),
+            );
+        }
+    }
+
+Botton Flotante
+***************
+Es muy común ver en apps un botón flotante abajo a la derecha o en otra posición. Este botón lo añadimos en **Scaffold** y se llama **FloatingActionButton**
+
+Este botón tiene las siguientes características:
+
+* child: Recibe un icono o un texto.
+* onPressed: Ejecuta un método anónimo personalizado.
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+
+    class HomePage extends StatelessWidget{
+
+        @override
+        Widget build(BuildContext context){
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Título"),
+                ),
+            body: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                            Text('Hola', style: TextStyle(fontSize: 25)),
+                        ],
+                ),
+            ),
+            floatingActionButton: FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: (){
+                    print("Hola mundo");
+                }
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            );
+        }
+    }
+
+StatefulWidget
+**************
+Si vamos a hacer cambios en nuestra pantalla, lo idoneo es pasarse a un **StatefulWidget**
+
+Ejemplo de StateFulWidget:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+
+    class HomePage extends StatefulWidget {
+
+        @override
+        createState() => _HomePageState();
+    }
+
+    class _HomePageState extends State<HomePage>{
+
+        // Esta variable es por lo que vamos a necesitar el stateful:
+        int _contador = 0;
+
+        Widget build(BuildContext context){
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Título"),
+                ),
+                body: Center(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                        Text('Hola', style: TextStyle(fontSize: 25)),
+                        Text('$_contador', style: TextStyle(fontSize: 20))
+                    ],
+                    ),
+                ),
+                floatingActionButton: FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: (){
+                    setState((){
+                        _contador++;
+                    });
+                    }
+                ),
+                floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            );
+        }
+    }
+
+.. hint::
+    Recuerda que puedes imprimir una variable en dart utilizando el símbolo $ dentro de las comillas Ej: '$_contador'
+
+.. hint::
+    Recuerda que el síbmolo _ indica que la variable o el método es privado
+
+.. hint:: 
+    con el método setState() redibujamos la pantalla para que se muestren los cambios. Sin el no pasaría el contador de 0 aunque se incremente internamente.
+
+
+Filas
+*****
+Las filas las generamos con el widget **Row()**
+
+Tiene las siguientes características:
+
+* mainAxisAligment: Como en Column pero con las opciones start,center, end, space around, space between.
+* children: Recibe una lista de widgets que irá mostrando de izquierda a derecha.
+
+Ejemplo de uso:
+
+.. code:: dart 
+
+    import 'package:flutter/material.dart';
+
+
+    class HomePage extends StatefulWidget {
+
+        @override
+        createState() => _HomePageState();
+        }
+
+        class _HomePageState extends State<HomePage>{
+
+        // Esta variable es por lo que vamos a necesitar el stateful:
+        int _contador = 0;
+
+        Widget build(BuildContext context){
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Título"),
+            ),
+            body: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                        Text('Hola', style: TextStyle(fontSize: 25)),
+                        Text('$_contador', style: TextStyle(fontSize: 20))
+                    ],
+                ),
+            ),
+            floatingActionButton: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                    SizedBox(width:30),
+                    FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: (){}
+                    ),
+                    Expanded(child: SizedBox()),
+                    FloatingActionButton(child: Icon(Icons.add), onPressed: (){}),
+                    SizedBox(width: 5.0),
+                    FloatingActionButton(child: Icon(Icons.remove), onPressed: (){}),
+                ],
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            );
+        }
+    }
+
+Crear tus propios widgets
+*************************
+Crear tus propios widgets es muy útil para separar código en las páginas y así poder hacer el código mas legible.
+
+Ejemplo para crear un Widget:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+
+    class HomePage extends StatefulWidget {
+
+        @override
+        createState() => _HomePageState();
+    }
+
+    class _HomePageState extends State<HomePage>{
+
+        // Esta variable es por lo que vamos a necesitar el stateful:
+        int _contador = 0;
+
+        Widget build(BuildContext context){
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text("Título"),
+                ),
+                body: Center(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                        Text('Hola', style: TextStyle(fontSize: 25)),
+                        Text('$_contador', style: TextStyle(fontSize: 20))
+                    ],
+                    ),
+                ),// Llamamos aquí en su lugar al nuevo widget _botonera():
+                floatingActionButton: _botonera(),
+                floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            );
+        }
+        // Creamos un método de tipo widget:
+        Widget _botonera(){
+            // retornamos un widget con el contenido que queremos mostrar:
+            return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                    SizedBox(width:30),
+                        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: _reiniciar),
+                        Expanded(child: SizedBox()),
+                        FloatingActionButton(child: Icon(Icons.add), onPressed: _sumar),
+                        SizedBox(width: 5.0),
+                        FloatingActionButton(child: Icon(Icons.remove), onPressed: _restar),
+                    ],
+                    ); // recuerda poner el ; en lugar de ,
+                }
+
+                    // aprovechamos para agregar metodos que alteren el número para suma, resta y reinicio:
+                    void _reiniciar(){
+                        setState(() => _contador = 0);
+                    }
+                    void _sumar(){
+                        setState(()=> _contador++);
+                    }
+                    void _restar(){
+                        setState(()=> _contador--);
+                    }
+                }
+    }
+
+
+Widgets de Flutter
+##################
+En esta sección vamos a ver los widgets mas usados en flutter.
+
+Crear Listas con ListView
+*************************
+Para crear una lista utilizamos el widget **ListView**.
+
+Este widget contiene los siguientes elementos:
+
+* Children: recibe una lista de widgets que contiene algunos widgets específicos:    
+    * ListTile: Elemento de la lista, se pueden poner tantos cuantos sean necesarios.
+    * Divider: Línea divisora que se coloca entre cada ListTile.
+
+
+Ejemplo de uso:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+    class HomePage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Listas')
+            ),
+            body: ListView(
+                children: <Widget>[
+                ListTile(
+                    title: Text('Titulo de elemento')
+                ),
+                Divider(),
+                ListTile(
+                    title: Text('Titulo de elemento 2')
+                ),
+                Divider(),
+                ListTile(
+                    title: Text('Titulo de elemento 3')
+                )
+                ]
+            )
+            );
+        }
+    }
+
+pasar Lista de dart a List de Flutter
++++++++++++++++++++++++++++++++++++++
+Lo mas común en Flutter es encontrarse listas dart con la información y es necesario realizar una serie de pasos para mostrarla en un ListView.
+
+Ejemplo de conversión:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+    class HomePage extends StatelessWidget {
+        // Creamos una lista de la compra:
+        final compra = ['leche', 'galletas', 'huevos', 'patatas', 'arroz'];
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(
+                    title: Text('Listas')
+                ),
+                body: ListView(
+                    children: _crearListado()
+                )
+            );
+        }
+
+        // Creamos un nuevo List de tipo widget que contendrá los ListTile de nuestra lista:
+        List<Widget> _crearListado(){
+            // Ahora vamos a crear otra lista dentro para guardar los elementos de la lista en dart:
+            List<Widget> lista = new List<Widget>();
+            // Recorremos la lista con un bucle:
+            for(String c in compra){
+            // Guardamos cada elemento de la lista en un listtile:
+            final compraTemp = ListTile(
+                title: Text(c)
+            );
+            // añadimos cada listtile al List:
+            lista.add(compraTemp);
+            // y añadimos un divisor:
+            lista.add(Divider());
+            }
+            // devolvemos la lista:
+            return lista;
+        }
+    }
+
+Pasar un JSON local a ListView
+++++++++++++++++++++++++++++++
+Veamos como utilizar un JSON como proveedor de información dinámica a la hora de generar un menu.
+
+Lo primero será crear un package en la raiz del proyecto llamado **data** y en la nueva carpeta creamos el archivo **opciones.json**:
+
+.. code:: json
+
+    {
+        "nombreApp" : "Menu",
+        "rutas" : [
+            {
+            "ruta" : "alerts",
+            "icono" : "add_alert",
+            "texto": "Avisos"
+            },
+            {
+            "ruta" : "acceso",
+            "icono" : "accessibility",
+            "texto": "Acceso"
+            },
+            {
+            "ruta" : "info",
+            "icono" : "folder_open",
+            "texto": "Información"
+            }
+        ]
+    }
+
+Para que podamos utilizar un archivo json necesitamos agregarlo en **pubspec.yaml** dentro de assets:
+
+.. code:: dart
+
+    assets:
+        - data/opciones.json
+
+.. warning::
+    Tras modificar pubspec.yaml tenemos que detener el emulador pulsando el botón rojo y volver a ejecutarlo
+
+El siguiente paso es generar un proveedor de servicios o Provider, para ello accedemos a la carpeta **src** y creamos el package **providers** en el cual crearemos el archivo **menu_provider.dart**:
+
+.. code:: dart
+
+    // Importamos el paquete de servicios de flutter:
+    import 'package:flutter/services.dart' show rootBundle;
+    // para parsear un json necesitamos en conversor de dart:
+    import 'dart:convert';
+
+    class _MenuProvider{
+        // Creamos una lista dinámica:
+        List<dynamic> opciones = [];
+
+        // con Future no necesitamos hacer nada en el constructor:
+        _MenuProvider(){}
+
+        // Utilizaremos Future para recuperar la información de forma asincrona:
+        Future<List<dynamic>> cargarDatos() async{
+            // cargamos el archivo json:
+            final respuesta = await rootBundle.loadString('data/opciones.json');
+
+            // parseamos el JSON a dart:
+            Map dataMap = json.decode(respuesta);
+
+            // seleccionamos el apartado rutas:
+            opciones = dataMap['rutas'];
+
+            // devolvemos las opciones:
+            return opciones;
+        }
+    }
+
+    // Creamos el objeto inmutable del menu:
+    final menuProvider = new _MenuProvider();
+
+Ahora nos vamos a la página donde queremos cargar el listado y utilizamos un **Future Builder** para realizar promesas en Flutter:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    // Importamos el archivo menuProvider:
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+
+    class HomePage extends StatelessWidget {
+        final compra = ['leche', 'galletas', 'huevos', 'patatas', 'arroz'];
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),// cargamos el nuevo widget menu:
+            body: _menu()
+            );
+        }
+
+        // Creamos un Widget para mostrar el provider:
+        Widget _menu(){
+            print(menuProvider.opciones);
+            // devolvemos un Future builder:
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(), // en future ejecutamos la llamada a la informacion
+            initialData: [], // por defecto tenemos que asignar un initialData vacío
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){ // en el builder crearemos el ListView con los datos del JSON
+                return ListView(
+                children: _opciones(snapshot.data), // Los listtiles los construiremos en un nuevo método
+                );
+            }
+
+            );
+        }
+
+        // creamos el método que hará los listtiles como antes pero usando el JSON parseado:
+        List<Widget> _opciones(List<dynamic> datos){
+            final List<Widget> opciones = [];
+            // recorremos los datos JSON recibidos por parametros:
+            datos.forEach((opcion){
+            final widgetTemp = ListTile(
+                title: Text(opcion['texto']),
+                leading: Icon(Icons.account_circle, color: Colors.amber),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.amberAccent),
+                onTap: (){
+
+                }
+            );
+
+            // los vamos pasando como antes a la Lista:
+            opciones.add(widgetTemp);
+            opciones.add(Divider());
+            });
+
+            return opciones;
+        }
+    }
+
+Creando Utilidades - Obtener los iconos de JSON para el listado
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Hay un modo bastante ordenado de hacer las cosas, tenemos un solo icono hardcodeado y necesitamos solucionar ese problema. Nuestro JSON trae unos nombres de icono que podemos utilizar como clave para extraer dichos iconos de forma dinámica. 
+Para eso nos creamos una utilidad, en la carpeta **src** creamos una carpeta llamada **utils** y dentro un archivo al que llamaremos **iconos_util.dart**:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+    // creamos la lista para referenciar los iconos a unas claves que serán la referencia a seguir:
+    final _iconos = <String, IconData>{
+        'add_alert': Icons.add_alert,
+        'accessibility': Icons.accessibility,
+        'folder_open': Icons.open_in_new
+        };
+
+        // Ahora creamos una función que nos devolverá un icono según la clave recibida:
+        Icon getIcon(String nombreIcono){
+        return Icon(_iconos[nombreIcono], color: Colors.amber);
+    }
+
+Volvemos al listado para utilizar nuestro utilidad de iconos:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+    // importamos la utilidad:
+    import 'package:flutterapp/src/utils/icono_utils.dart';
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),//
+            body: _menu()
+            );
+        }
+
+        Widget _menu(){
+            print(menuProvider.opciones);
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                return ListView(
+                children: _opciones(snapshot.data),
+                );
+            }
+
+            );
+        }
+
+        List<Widget> _opciones(List<dynamic> datos){
+            final List<Widget> opciones = [];
+            datos.forEach((opcion){
+            final widgetTemp = ListTile(
+                title: Text(opcion['texto']),
+                // le pasamos al leading la funcion getIcon y por parametros el codigo del icono:
+                leading: getIcon(opcion['icono']),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.amberAccent),
+                onTap: (){
+
+                }
+            );
+
+            opciones.add(widgetTemp);
+            opciones.add(Divider());
+            });
+
+            return opciones;
+        }
+    }
+
+Navegacion
+##########
+Vamos a ver como navegar a través de distintas pantallas de flutter.
