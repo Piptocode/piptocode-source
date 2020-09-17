@@ -784,4 +784,448 @@ Volvemos al listado para utilizar nuestro utilidad de iconos:
 
 Navegacion
 ##########
+
+Navegación entre páginas
+************************
+
 Vamos a ver como navegar a través de distintas pantallas de flutter.
+
+Para ello nos valemos del punto anterior en el que creamos un listado y establecer un cambio.
+
+* Vamos a la carpeta **pages** y creamos un archivo llamado **avisos_page.dart** en el que escribimos lo siguiente:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+
+    class AvisosPage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Página de Avisos')
+            ),
+            body: Center(
+                child: Text('No existen avisos')
+            ),
+            );
+        }
+    }
+
+
+* Regresamos a **home_page.dart** para agregar el vínculo:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+    import 'package:flutterapp/src/utils/icono_utils.dart';
+
+    // Importamos la página avisos:
+    import 'package:flutterapp/src/pages/avisos_page.dart';
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),//
+            body: _menu()
+            );
+        }
+
+        Widget _menu(){
+            print(menuProvider.opciones);
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                return ListView(        // El widget opciones deberá enviar el contexto de la app:
+                children: _opciones(snapshot.data, context),
+                );
+            }
+
+            );
+        }
+                                                    // del mismo modo lo recibirá:
+        List<Widget> _opciones(List<dynamic> datos, context){
+            final List<Widget> opciones = [];
+            datos.forEach((opcion){
+            final widgetTemp = ListTile(
+                title: Text(opcion['texto']),
+                leading: getIcon(opcion['icono']),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.amberAccent),
+                onTap: (){
+                    // Creamos la ruta:
+                    final route = MaterialPageRoute(
+                    // apuntamos la ruta con el metodo de la página de rutas:
+                    builder: (context) => AvisosPage()
+                    );
+
+                    // realizamos la navegación agregandole el contexto y la ruta:
+                    Navigator.push(context, route);
+                }
+            );
+
+            opciones.add(widgetTemp);
+            opciones.add(Divider());
+            });
+
+            return opciones;
+        }
+    }
+
+
+Navegación por rutas
+********************
+Desde nuestro main se puede configurar un sistema de enrutamiento con el atributo **routes** en el widget **MaterialApp**.
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    // se importan las páginas que vamos a enrutar:
+    import 'package:flutterapp/src/pages/home_page.dart';
+    import 'package:flutterapp/src/pages/avisos_page.dart';
+
+    void main(){
+        runApp(new MyApp());
+    }
+
+    class MyApp extends StatelessWidget{
+        @override
+        build(context){
+            return MaterialApp(
+            title: 'Mi aplicación de prueba',
+                debugShowCheckedModeBanner: false,
+                // cambiamos el home por initialRoute:
+                initialRoute: '/',
+                // y ahora establecemos las rutas en routes:
+                routes: <String, WidgetBuilder>{
+                '/': (BuildContext context) => HomePage(),
+                'avisos': (BuildContext context) => AvisosPage()
+                }
+            );
+        }
+    }
+
+Ahora veamos como sería la página **home_page.dart** con la navegación por rutas:
+
+.. code:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+    import 'package:flutterapp/src/utils/icono_utils.dart';
+
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),//
+            body: _menu()
+            );
+        }
+
+        Widget _menu(){
+            print(menuProvider.opciones);
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                return ListView(
+                children: _opciones(snapshot.data, context),
+                );
+            }
+
+            );
+        }
+
+        List<Widget> _opciones(List<dynamic> datos, context){
+            final List<Widget> opciones = [];
+            datos.forEach((opcion){
+            final widgetTemp = ListTile(
+                title: Text(opcion['texto']),
+                leading: getIcon(opcion['icono']),
+                trailing: Icon(Icons.keyboard_arrow_right, color: Colors.amberAccent),
+                onTap: (){
+                    // Utilizamos pushNmaed y le pasamos el contexto y nombre de la ruta asignada:
+                    Navigator.pushNamed(context, 'avisos');
+                }
+            );
+
+            opciones.add(widgetTemp);
+            opciones.add(Divider());
+            });
+
+            return opciones;
+        }
+    }
+
+Tarjeta o Card Widget
+#####################
+Las tarjetas en flutter se utilizan bastante para presentar conjunto de elementos y este widget se llama **card**
+
+Los atributos mas comunes de **card**:
+
+* child: se le adigna un widget hijo, puede ser una column o un row por ejemplo para añadir mas contenido.
+
+Veamos un ejemplo de uso en un listado:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),//
+            body: _menu()
+            );
+        }
+
+        Widget _menu(){
+            print(menuProvider.opciones);
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                return ListView(
+                children: <Widget>[
+                    // vamos a crear un widget nuevo donde almacenar la tarjeta
+                    _tarjeta()
+                ],
+                );
+            }
+
+            );
+        }
+
+        // Y aquí vemos como ir organizando en una columna la tarjeta:
+        Widget _tarjeta(){
+            return Card(
+            child: Column(
+                children: <Widget>[
+                ListTile(
+                    leading: Icon(Icons.photo_album, color: Colors.red),
+                    title: Text('Título de la tarjeta'),
+                    subtitle: Text('Subtítulo de la tarjeta'),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                    FlatButton(
+                        child: Text('OK'),
+                        onPressed: (){},
+                    )
+                    ]
+                )
+                ]
+            )
+            );
+        }
+
+    }
+
+Imágenes
+########
+Podemos cargar imágenes en Flutter con el widget FadeInImage.
+
+Atributos de FadeInImage:
+
+* image: aquí colocaremos un widget de tipo networkImage o assetImage con una image desde internet o desde el dispositivo local.
+* placeholder: es la imagen que se muestra mientras espera a que termine de cargar la imagen real porque esta anterior se encuentre en un servidor remoto.
+* fadeInDuration: animacion programable en milisegundos para hacer un efecto fundido cuando se carge la imagen.
+* height: alto de la imagen.
+* width: ancho de la imagen.
+
+
+Por convención creamos en la raiz de nuestro proyecto una carpeta llamada **assets** y editamos el archivo **pubspec.yaml** para añadir una nueva línea al apartado assets:
+
+.. code:: dart
+
+      assets:
+        - ...
+        - assets/
+
+Ahora podemos cargar desde esa carpeta cualquier imagen en nuestro código:
+
+.. code:: dart 
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Menu Principal')
+            ),//
+            body: _menu()
+            );
+        }
+
+        Widget _menu(){
+            print(menuProvider.opciones);
+            return FutureBuilder(
+            future: menuProvider.cargarDatos(),
+            initialData: [],
+            builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot){
+                return ListView(
+                children: <Widget>[
+                    _tarjeta()
+                ],
+                );
+            }
+
+            );
+        }
+
+        Widget _tarjeta(){
+            return Card(
+            child: Column(
+                children: <Widget>[
+                FadeInImage( // podemos cargar una imagen desde la red:
+                    image: NetworkImage('https://i11c.3djuegos.com/juegos/12860/resident_evil_5__2016_/fotos/ficha/resident_evil_5__2016_-3314278.jpg'),
+                    // o desde la carpeta assets:
+                    placeholder: AssetImage('assets/re5.jpg'),
+                    fadeInDuration: Duration(milliseconds: 3000),
+                    height: 300.0,
+                )
+            ]
+            )
+            );
+        }
+    }
+
+Alertas 
+#######
+Las alertas las realizamos con el widget **showDialog**.
+
+Este widget posee los siguientes atributos:
+
+* context: recibe el contexto de los widgets.
+* barrierDimissible: permite o no cerrar la alerta tocando fuera de esta.
+* builder: es donde creamos la estructura de la alerta.
+
+Ejemplo de uso de una alerta:
+
+.. code:: dart
+
+    import 'package:flutter/material.dart';
+    import 'package:flutterapp/src/providers/menu_provider.dart';
+
+    class HomePage extends StatelessWidget {
+
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Ejemplo de alerta')
+            ),//
+            body: Center(
+                child: RaisedButton(
+                child: Text('Lanzar alerta'),
+                color: Colors.deepPurple,
+                textColor: Colors.amber,
+                shape: StadiumBorder(),
+                onPressed: () => _alerta(context)
+                )
+            )
+            );
+        }
+
+        // para crear una alerta creamos un nuevo método que no retorna nada:
+        void _alerta(BuildContext context){
+            // lanzamos el widget showDialog:
+            showDialog(
+            context: context,
+            barrierDismissible: true,
+            builder: (context){
+                // En el builder le pasamos el widget AlertDialog:
+                return AlertDialog(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)), // el shape da forma a la ventana
+                title: Text('Título del mensaje'),
+                content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                    Text('Este es el contenido de la alerta'),
+                    FlutterLogo(size: 80.0)
+                    ]
+                ),// el atributo actions recibe los botones que ejecutarán diferentes eventos:
+                actions: <Widget>[
+                    FlatButton(
+                    child: Text('Cancelar'),
+                    onPressed: ()=> Navigator.of(context).pop(),
+                    ),
+                    FlatButton(
+                    child: Text('Aceptar'),
+                    onPressed: ()=> Navigator.of(context).pop(),
+                    )
+                ]
+                );
+            }
+            );
+        }
+
+    }
+
+
+Avatar circular
+###############
+En Flutter se suele generar avatares circulares, esto se hace con la ayuda del widget **CircleAvatar**.
+
+Atributos del widget:
+
+* child: Recibe un widget como por ejemplo un texto.
+* backgroundColor: personaliza el color del circulo.
+* backgroundImage: recibe una imagen 
+* radius: establece el tamaño de la esfera del avatar.
+
+Ejemplo de uso:
+
+.. code:: dart 
+
+    import 'package:flutter/material.dart';
+    
+    class HomePage extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+            appBar: AppBar(
+                title: Text('Ejemplo de avatar'),
+                actions: <Widget>[
+                Container(
+                    padding: EdgeInsets.all(5.0),
+                    child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/re5.jpg'),
+                    radius: 25.0,
+                    )
+                )
+                ]
+            ),//
+            body: Center(
+                child: CircleAvatar(
+                child: Text('ICONO'),
+                backgroundColor: Colors.deepPurple,
+                radius: 55.0
+                )
+            )
+            );
+        }
+
+    }
+
+
+**PENDIENTE DE CONTINUAR**
