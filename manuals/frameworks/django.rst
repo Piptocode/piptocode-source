@@ -844,11 +844,11 @@ sentencias trabajar con estos datos.
 
 Ahora vamos a conocer los distintos comandos para realizar QuerySets:
 
-* Prueba.objects.all(): devuelve todos los registros de la tabla Prueba
-* Prueba.objects.create(titulo="Ejemplo", descripcion="esto es una entrada"): Genera un nuevo registro en la tabla Prueba, ten en cuenta que esten todos los campos o sino que puedan estar en blanco (blank=True)
-* Prueba.objects.filter(titulo__contains = 'Ejemplo'): Permite filtrar las tablas para devolver solo aquellos que contienen la palabra clave, si quitamos __contains solo obtendrá los que tengan exactamente y únicamente esa palabra.
-* Prueba.objects.order_by('fecha_creacion'): Permite ordenar los registros de la tabla nuevamente cuando se cargan en la vista.
-* Prueba.objects.delete(titulo="Ejemplo"): Elimina un valor según el campo que hayamos elegido para buscarlo
+* ``Prueba.objects.all()``: devuelve todos los registros de la tabla Prueba
+* ``Prueba.objects.create(titulo="Ejemplo", descripcion="esto es una entrada")``: Genera un nuevo registro en la tabla Prueba, ten en cuenta que esten todos los campos o sino que puedan estar en blanco (blank=True)
+* ``Prueba.objects.filter(titulo__contains = 'Ejemplo')``: Permite filtrar las tablas para devolver solo aquellos que contienen la palabra clave, si quitamos __contains solo obtendrá los que tengan exactamente y únicamente esa palabra.
+* ``Prueba.objects.order_by('fecha_creacion')``: Permite ordenar los registros de la tabla nuevamente cuando se cargan en la vista.
+* ``Prueba.objects.delete(titulo="Ejemplo")``: Elimina un valor según el campo que hayamos elegido para buscarlo
 
 Para salir de la consola ORM escribimos ``exit()`` y pulsamos intro
 
