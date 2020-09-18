@@ -1083,3 +1083,18 @@ editando el archivo admin.py:
 
     admin.site.register(Prueba, PruebaAdmin)
 
+Cambiar título al panel
+***********************
+
+Para cambiar el título que se muestra en el panel es tan sencillo como irnos a urls.py principal y al final del archivo añadir:
+
+.. code:: python 
+
+    # Cambiar el título:
+    admin.site.site_header = 'Mi Sitio web'
+    
+    # Cambiar el subtítulo: 
+    admin.site.index_title = 'Panel de Administración'
+    
+    # cambiar texto de la pestaña de navegación:
+    admin.site.site_title = 'Mi sitio web dedicado a Django!!!'
