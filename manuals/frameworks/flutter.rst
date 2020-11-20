@@ -1,7 +1,7 @@
 =======
 Flutter
-=======
-
+======= 
+ 
 .. image:: /logos/logo-flutter.png
     :scale: 75%
     :alt: Logo JS
@@ -15,7 +15,7 @@ Flutter
 Esta es la documentación que he recopilado para trabajar con Flutter, el SDK para desarrollo de Apps para Android e IOS. 
 
 .. contents:: Índice
-
+  
 Instalación de Flutter
 ######################
 Para instalar Flutter en nuestro ordenador debemos hacer lo siguiente:

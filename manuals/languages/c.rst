@@ -1,7 +1,7 @@
 =
 C
 =
-
+  
 .. image:: /logos/logo-c.png
     :scale: 75%
     :alt: Logo JS
@@ -13,7 +13,7 @@ C
 Última edición el día |date| a las |time|.
 
 Esta es la documentación que he recopilado para trabajar con C, un lenguaje clásico que veo oportuno aprender primero antes que cualquier otro lenguaje que utilices pra trabajo o para proyectos personales. 
-
+ 
 .. contents:: Índice
 
 Elementos básicos del lenguaje

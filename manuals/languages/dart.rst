@@ -13,7 +13,7 @@ Dart
 Última edición el día |date| a las |time|.
 
 Esta es la documentación que he recopilado para trabajar dart. Dart, junto con Flutter podemos desarrollar aplicaciones Nativas para Android. 
-
+ 
 .. contents:: Índice
 
 Elementos básicos del lenguaje
@@ -937,8 +937,8 @@ Al igual que en lenguajes como Javascript, Dart dispone de Async y Await de form
 Clases
 ######
 Las clases en Dart tienen una estructura similar al de otros lenguajes,
- 
-.. code:: dart
+
+.. code::  
 
     import 'dart:io';
 
@@ -979,7 +979,7 @@ Atributos Privados
 ******************
 Para hacer que los atributos sean privados en Dart el modificador que utilizamos es ``_``
 
-.. code:: dart 
+.. code::  
 
     class Persona {
         // Para hacer un atributo privado ponemos el caracter _
@@ -1003,7 +1003,7 @@ Getters y Setters
 *****************
 Con Get y Set podemos trabajar con atributos privados fuera de clase, osea cuando hemos creado un objeto.
 
-.. code:: dart 
+.. code::  
 
     class Persona {
         String nombre;
@@ -1038,7 +1038,7 @@ En Dart para las clases como en cualquier lenguaje tenemos los constructores com
 
 * Creamos un archivo llamado Persona.dart:
 
-.. code:: dart 
+.. code::  
 
     class Persona {
         String nombre;
@@ -1113,7 +1113,7 @@ Los constructores con nombre son constructores adicionales que se generan en las
 
 * Ejemplo de clase:
 
-.. code:: dart 
+.. code::  
 
     class Persona{
         String nombre;
@@ -1306,7 +1306,7 @@ Las clases abstractas se utilizan en programación para diseñar la estructura d
 
 * Ejemplo de uso:
 
-.. code:: dart 
+.. code::  
 
     // Definimos la clase abstracta y de esta no se puede crear objeto ya que es un cascarón de otra clase hija:
     abstract class Vehiculo {
@@ -1380,7 +1380,7 @@ Sobreescribir métodos
 *********************
 Para sobreescribir la funcionalidad de un método en dart utilizamos el decorador ``@override``
 
-.. code:: dart 
+.. code::  
 
     class Persona{
         String nombre;

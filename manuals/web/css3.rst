@@ -1,12 +1,12 @@
 ====
-CSS3
+CSS3 
 ====  
-
+ 
 .. image:: /logos/logo-css3.png
     :scale: 25%
     :alt: Logo CSS3
     :align: center
-
+ 
 .. |date| date::
 .. |time| date:: %H:%M
 

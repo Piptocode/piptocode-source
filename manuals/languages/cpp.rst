@@ -1,7 +1,7 @@
 ===
 C++
 ===
-
+  
 .. image:: /logos/logo-cpp.png
     :scale: 25%
     :alt: Logo JS
@@ -13,7 +13,7 @@ C++
 Última edición el día |date| a las |time|.
 
 He recopilado la siguiente información para tener un acercamiento a C++ con el propósito de aprender mas sobre el lenguaje que por defecto utilizan las placas Arduino.
-
+ 
 .. contents:: Índice
 
 Elementos básicos del lenguaje
@@ -768,8 +768,191 @@ Vamos a ver un sencillo ejemplo del uso de punteros en C++:
 
 Clases
 ######
-El gran avance de C++ frente a C tradicional es la inclusión del paradigma orientado a objetos, 
-en este manual no voy a cubrir el tema de clases con C++ debido a su enorme diferencia con otros lenguajes y para los algoritmos que vamos a abordar con Arduino no será necesario.
+El gran avance de C++ frente a C tradicional es la inclusión del paradigma orientado a objetos.
+
+* Creación de clases con atributos, metodo y creación del objeto:
+
+.. code:: cpp
+
+    #include <iostream>
+    using namespace std;
+
+    // creamos la clase:
+    class MiClase {
+        public: // definimos el tipo de encapsulación si es publica o privada
+            // definimos los atributos
+            int numero; 
+            string cadena; 
+            // y esto es un método de ejemplo:
+            void miMetodo(){
+                cout << "Metodo de prueba" << endl;
+            }
+            // metodo que recibe parámetros:
+            void conParametros(int edad){
+                cout << "Tienes " << edad << " años." << endl;
+            }
+    }; // las clases se cierran con ;
+
+    int main(){
+        // creamos un objeto a partir de la clase anterior:
+        MiClase miObjeto;
+
+        // podemos acceder directamente a sus atributos
+        miObjeto.numero = 20;
+        miObjeto.cadena = "Texto de prueba";
+
+        // imprimimos los valores:
+        cout << miObjeto.numero << endl;
+        cout << miObjeto.cadena << endl;
+        // llamar a un método:
+        miObjeto.miMetodo();
+        // llamar a un metodo y enviar un parámetro:
+        miObjeto.conParametros(33);
+
+        return 0;
+    }
+
+* Clases con constructor:
+
+.. code:: cpp
+
+    #include <iostream>
+    using namespace std;
+
+    class MiClase {
+        public:
+            string nombre;
+            int edad;
+            
+            // el constructor lleva el nombre de la clase y puede recibir parametros:
+            MiClase(string n, int e){
+                nombre = n;
+                edad = e;
+
+                cout << "Objeto creado con éxito" << endl;
+            }
+
+            void presentacion(){
+                cout << "Te llamas " << nombre << " y tienes " << edad << " años." << endl;
+            }
+    };
+
+    int main(){
+        MiClase miObjeto("Felipe", 37);
+
+        miObjeto.presentacion();
+        return 0;
+    }
+
+Tipos de encapsulación en C++
+*****************************
+Existen tres tipos de encapsulación en C++:
+
+* public: los atributos y métodos son publicos y por tanto se puede acceder a ellos una vez creado el objeto.
+* private: los atributos y metodos no pueden ser llamados o modificados desde el objeto.
+* protected: los atributos y metodos solo pueden ser llamados o modificados desde otras clases anidadas.
+
+Get y Set 
+*********
+Para manejar atributos y metodos privados utilizaremos los get y set, estos metodos son una convención en programación:
+
+.. code:: cpp
+
+    #include <iostream>
+    using namespace std;
+
+    class MiClase {
+        // cada atributo o metodo lo manejaremos en su propia capa de encapsulación.
+        private:
+            int numA;
+        public:
+            // Con los setter modificamos el atributo:
+            void setNumero(int n){
+                numA = n;
+            }
+
+            // y con los getter recuperamos el atributo, debemos poner el tipo de devolución como en las funciones:
+            int getNumero(){
+                return numA;
+            }
+    };
+
+    int main(){
+        MiClase numeros;
+
+        numeros.setNumero(27);
+        cout << "El numero establecido es: " << numeros.getNumero() << endl;
+    }
+
+Herencia
+********
+La herencia en C++ se realizaría del siguiente modo:
+
+.. code:: cpp 
+
+    #include <iostream>
+    using namespace std;
+
+    // clase padre:
+    class Mueble {
+        public:
+            string mueble = "Mesa";
+            void accion(){
+                cout << "PONER LA MESA" << endl;
+                cout << "=============" << endl;
+            }
+    };
+
+    // clase hijo que hereda del padre:
+    class MesaComedor: public Mueble {
+        public:
+            string tipo = "Mesa del comedor";
+    };
+
+    int main(){
+        MesaComedor mesa;
+
+        mesa.accion();
+        cout << "Hay que poner la " << mesa.mueble << endl;
+        cout << "¿Qué mesa?" << endl;
+        cout << "La " << mesa.tipo << endl;
+    }
+
+En la herencia de clases existe otro concepto llamado polimorfismo y se basa en reutilizar los metodos de las clases padre para modificarlos en las clases hijo de forma que
+podemos reutilizarlos sin necesidad de crear unos nuevos.
+
+Manejo de errores
+#################
+El manejo de errores en C++ se realiza con **try** y **catch**:
+
+.. code:: cpp 
+
+    #include <iostream>
+    using namespace std;
+
+    int main(){
+        int numeroA;
+        int numeroB = 20;
+        int total;
+
+        cout << "introduce un número:" << endl;
+        cin >> numeroA;
+        total = numeroA + numeroB;
+
+        // con try probaremos a ejecutar una operación:
+        try{
+            // si el valor es mayor a 20 siginfica que el numeroA no es una letra o un valor igual menor que 0:
+            if(total > 20){
+                cout << "El resultado de la suma es: " << total << endl; 
+            }else{
+                // sino provocaremos un error:
+                throw(numeroA);
+            }
+        } // catch caputará el error provocado:
+        catch(int numero){
+            cout << "El valor introducido no es correcto: " << numero << endl;
+        }
+    }
 
 
 Librerías de C++

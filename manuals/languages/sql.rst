@@ -1,5 +1,7 @@
 ===
 SQL
 ===
-
+ 
 **ESTE MANUAL SE CREARÁ PRÓXIMAMENTE**
+
+ 

@@ -1,7 +1,7 @@
 ================
-reStructuredText
+reStructuredText  
 ================ 
-
+ 
 .. |date| date::
 .. |time| date:: %H:%M
 
@@ -16,7 +16,7 @@ Estilo de fuente
 Para añadir estilo al texto hay que rodearlo con el siguiente formato:
 
 * Texto en negrita: ``**negrita**`` 
- 
+
 Ejemplo: **negrita**
  
 * Texto remarcado en bloque de código: ````print()````

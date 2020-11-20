@@ -1,7 +1,7 @@
 ========
 Python 3
 ========
-
+  
 .. image:: /logos/logo-python.png
     :scale: 25%
     :alt: Logo JS
@@ -14,7 +14,7 @@ Python 3
 
 Esta es la documentación que he recopilado para trabajar con Python 3, el lenguaje de propósito general que me gusta utilizar en mis proyectos y en mi trabajo del día a dia.
 
-.. contents:: Índice
+.. contents:: Índice 
 
 Elementos básicos del lenguaje
 ##############################
@@ -820,6 +820,40 @@ pasarlo a los métodos que vayan a utilizar atributos de la clase (osea practica
     luis = Luis()
     # y podemos acceder a los metodos del padre como a sus atributos:
     luis.datos()
+
+* Acceso a atributos y metodos de otras clases:
+
+.. code:: python 
+
+    class Animal:
+        tipo = "perro"
+        edad = 5
+
+        def __init__(self):
+            print("animal creado")
+
+        def saberEdad(self):
+            return self.edad
+        
+        
+
+    class Mascota:
+        def __init__(self):
+            # creamos el objeto y usamos self para poder manejarlo en toda la clase:
+            self.animal = Animal()
+            # y con un punto podemos recuperar atributos y metodos:
+            print("Mi mascota es un {}".format(self.animal.tipo, self.animal.saberEdad()))
+
+        def cumple(self, nuevaEdad):
+            self.animal.edad = nuevaEdad
+            print("Mi {} cumple {} años".format(self.animal.tipo, self.animal.saberEdad()))
+
+    mascota = Mascota()
+
+    mascota.cumple(6)
+
+En este ejemplo se podía haber usado la herencia, pero lo he realizado de este modo para mostrar 
+como se puede recuperar atributos y metodos de otro objeto cuando la herencia no encaja tanto.
 
 Manejo de errores
 #################

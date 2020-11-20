@@ -10,14 +10,14 @@ Django
 .. |date| date::
 .. |time| date:: %H:%M
 
-Última edición el día |date| a las |time|.
+Última edición el día |date| a las |time|. 
 
 Esta es la documentación que he recopilado para trabajar con Django, un framework basado en Python que sirve para desarrollar aplicaciones web.
-
+ 
 .. contents:: Índice
  
-Primeros Pasos
-##############
+Primeros Pasos 
+##############  
 
 Creación del proyecto
 *********************
