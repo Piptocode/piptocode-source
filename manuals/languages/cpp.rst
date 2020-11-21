@@ -850,7 +850,7 @@ Existen tres tipos de encapsulación en C++:
 
 * public: los atributos y métodos son publicos y por tanto se puede acceder a ellos una vez creado el objeto.
 * private: los atributos y metodos no pueden ser llamados o modificados desde el objeto.
-* protected: los atributos y metodos solo pueden ser llamados o modificados desde otras clases anidadas.
+* protected: los atributos y metodos solo pueden ser llamados o modificados desde la clase.
 
 Get y Set 
 *********
@@ -918,8 +918,9 @@ La herencia en C++ se realizaría del siguiente modo:
         cout << "La " << mesa.tipo << endl;
     }
 
-En la herencia de clases existe otro concepto llamado polimorfismo y se basa en reutilizar los metodos de las clases padre para modificarlos en las clases hijo de forma que
-podemos reutilizarlos sin necesidad de crear unos nuevos.
+.. important::
+    En la herencia de clases existe otro concepto llamado polimorfismo y se basa en reutilizar los metodos de las clases padre para modificarlos en las clases hijo de forma que
+    podemos reutilizarlos sin necesidad de crear unos nuevos.
 
 Manejo de errores
 #################

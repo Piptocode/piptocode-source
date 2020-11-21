@@ -1223,7 +1223,199 @@ Ejemplo de uso:
 
 Clases
 ######
-EN PROCESO...
+PHP se ha ido adaptando al paso del tiempo desde su propósito inicial como lenguaje de servidor hasta llegar a alcanzar una sintaxis muy parecida a otros lenguajes de alto nivel.
+Entre estas mejoras ya disponemos del paradigma orientado a objetos.
+
+* Creación de clases con atributos, metodo y creación del objeto:
+
+.. code:: php
+
+    <?php 
+        // creamos la clase:
+        class Persona {
+            // Definimos los atributos y el ámbito si son publicos o privados:
+            public $nombre;
+            public $edad;
+
+            // Definimos el constructor:
+            function __construct($nombre, $edad){
+                $this->nombre = $nombre;
+                $this->edad = $edad;
+            }
+            // Y definimos abajo los métodos:
+            function saludar(){
+                echo "Te llamas " . $this->nombre . " y tienes " . $this->edad . " años.";
+            } 
+        }
+
+        // crear objeto:
+        $persona = new Persona("Agustín", 32);
+        // acceder a sus atributos:
+        echo $persona->nombre . "\n";
+        // acceder a sus métodos
+        $persona->saludar();
+    ?>
+
+.. important::
+    Los atributos siempre tienen que llevar un modificador de acceso como public o private o protected pero los metodos si no
+    lo definimos por defecto son public.
+
+Tipos de encapsulación en PHP
+*****************************
+Existen tres tipos de encapsulación en PHP:
+
+* public: los atributos y métodos son publicos y por tanto se puede acceder a ellos una vez creado el objeto.
+* private: los atributos y metodos no pueden ser llamados o modificados desde el objeto.
+* protected: los atributos y metodos solo pueden ser llamados o modificados desde la clase.
+
+Get y Set 
+*********
+Cuando manejamos atributos y métodos privados lo que utilizamos para ver o modificar estos es una convención 
+llamada getter y setter la cual se basa en la creación de metodos públicos que sirven solo para esos fines.
+
+.. code:: php
+
+    <?php 
+        // creamos la clase:
+        class Persona {
+            // Establecemos los métodos como privados:
+            private $nombre;
+            private $edad;
+            private $clave = "Fo372SA";
+
+            function __construct($nombre, $edad){
+                $this->nombre = $nombre;
+                $this->edad = $edad;
+            }
+            function saludar(){
+                echo "Te llamas " . $this->nombre . " y tienes " . $this->edad . " años.";
+            } 
+            // para acceder a los métodos ahora usamos get:
+            function get_nombre(){
+                return $this->nombre;
+            }
+            function get_edad(){
+                return $this->edad;
+            }
+            // para modificar los atributos usamos set:
+            function set_nombre($nombre){
+                $this->nombre = $nombre;
+                echo "Se ha cambiado el nombre por " . $this->nombre . "\n";
+            }
+            function set_edad($edad){
+                $this->edad = $edad;
+                echo "Se ha cambiado la edad por " . $this->edad . "\n";
+            }
+            // a este método no se puede acceder desde el objeto:
+            private function ver_clave(){
+                echo "La clave es: " . $this->clave;
+            }
+            // para ello usaremos un get:
+            function get_clave(){
+                $this->ver_clave();
+            }
+        }
+
+        $persona = new Persona("Agustín", 32);
+        // Ver los atributos:
+        echo $persona->get_nombre();
+        echo "\n";
+        echo $persona->get_edad();
+        echo "\n";
+        // modificar los atributos:
+        $persona->set_nombre("Paquito");
+        $persona->set_edad(47);
+
+        // para ejecutar un metodo privado usamos un get:
+        $persona->get_clave();
+    ?>  
+
+.. important::
+    tanto Get como Set son convenciones para definir estos métodos de acceso a atributos y metodos privados pero 
+    en realidad son metodos normales.
+
+Herencia
+********
+La herencia en PHP es similar a lenguajes como Java o C#:
+
+.. code:: php 
+
+    <?php 
+        // creamos una clase padre:
+        class Animal{
+            public $especie;
+            public $edad;
+
+            function __construct($especie, $edad){
+                $this->especie = $especie;
+                $this->edad = $edad;
+            }
+
+            function info(){
+                echo "Nuestro animal es un " . $this->especie . " y tiene " . $this->edad . " años \n";
+            }
+        }
+        // ahora creamos una clase hijo:
+        class Humano extends Animal{
+            // el hijo tiene sus atributos y metodos:
+            public $nombre;
+
+            function __construct($nombre, $edad){
+                $this->nombre = $nombre;
+                // pero también tenemos los metodos y atributos del padre:
+                $this->especie = "Humano";
+                $this->edad = $edad;
+            } 
+
+            function saludo(){
+                echo "Me llamo " . $this->nombre . " y tengo " . $this->edad . " años.\n";
+            }
+
+        }
+        // con el padre tenemos una serie de atributos y métodos:
+        $animal = new Animal("León", 7);
+        $animal->info();
+        // que con el hijo podemos utilizar:
+        $humano = new Humano("Paco", 27);
+        // podemos usar sus propios metodos:
+        $humano->saludo();
+        
+        // y podemos llamar a metodos del padre en el hijo:
+        $humano->info();
+
+
+
+    ?>  
+
+.. important::
+    En la herencia de clases existe otro concepto llamado polimorfismo y se basa en reutilizar los metodos de las clases padre para modificarlos en las clases hijo de forma que
+    podemos reutilizarlos sin necesidad de crear unos nuevos.
+
+Atributos y Métodos estáticos
+*****************************
+Los atributos y métodos estáticos en PHP son aquellos que se pueden acceder sin crear un objeto fuera de la clase con el uso de **::**.
+Estos métodos llevan un segundo modificador llamado ``static`` justo después de ``public``:
+
+.. code:: 
+
+    <?php 
+
+        class Preguntas{
+            // atributo estatico disponible:
+            public static $nombre = "Augusto";
+            // metodo estatico disponible:
+            public static function hacerPregunta(){
+                echo "¿Cómo te llamas?";
+            }
+        }
+
+        // uso de metodo estático:
+        Preguntas::hacerPregunta();
+        echo "\n";
+        // uso de atributo estatico:
+        echo "Me llamo " . Preguntas::$nombre;
+
+    ?>  
 
 Manejor de archivos
 ###################
@@ -1295,9 +1487,224 @@ Cuando abrimos un archivo en php siempre asignamos un permiso:
 
 Conectar a bases de datos con PDO
 #################################
-PDO sirve para conectarse a gran cantidad de bases de datos con el mismo código ya sea MySQL, SQL Server o PostgreSQL entre otras.
+PDO (PHP Data Objects) sirve para conectarse a gran cantidad de bases de datos con el mismo código ya sea MySQL, SQL Server o PostgreSQL entre otras.
 
-MAS ADELANTE SE INCLUIRÁN EJEMPLOS DE USO
+* Conexión a base de datos MySQL:
+
+.. code:: php 
+
+    <?php 
+        // preparamos los datos del servidor:
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        // preparamos la conexión eligiendo el motor mysql:
+        $conn = new PDO("mysql:host=$servidor;dbname=prueba", $usuario, $clave);
+        // realizamos la conexión:
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Conexión realizada con éxito";
+
+        // para cerrar la conexión:
+        $conn = null;
+    ?>  
+
+* Crear una base de datos:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        // ignoramos elegir la base de datos al preparar conexión::
+        $conn = new PDO("mysql:host=$servidor", $usuario, $clave);
+        // realizamos la conexión:
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // preparamos la consulta:
+        $sql = "CREATE DATABASE pruebaSQL";
+        // realizamos la consulta:
+        $conn->exec($sql);
+        
+        echo "Base de datos creada con éxito";
+        $conn = null;
+    ?>
+
+
+* Crear una tabla:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "CREATE TABLE agenda(
+            id INT(10) AUTO_INCREMENT PRIMARY KEY,
+            nombre VARCHAR(30) NOT NULL,
+            edad INT(10) NOT NULL
+            )";
+
+        $conn->exec($sql);
+        
+        echo "Tabla creada con éxito";
+        $conn = null;
+    ?>  
+
+* Agregar registros a la tabla:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO agenda (nombre, edad) values ('Alfredo', 30)";
+
+        $conn->exec($sql);
+        
+        echo "Inserción realizada con éxito";
+        $conn = null;
+    ?>  
+
+* Hacer varias inserciones separando los parámetros:
+
+.. code:: php
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Preparar consulta para separar parametros:
+        $sql = $conn->prepare("INSERT INTO agenda (nombre, edad) VALUES (:nombre, :edad)");
+        // preparar parametros:
+        $sql->bindParam(':nombre', $nombre);
+        $sql->bindParam(':edad', $edad);
+
+        // insertar mas de un registro a la vez:
+        $nombre = "Antonio";
+        $edad = 38;
+        $sql->execute();
+
+        $nombre = "Eustaquia";
+        $edad = 73;
+        $sql->execute();
+        
+        echo "Inserciones realizadas correctamente";
+        $conn = null;
+    ?>  
+
+
+* Leer registros de la tabla:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Preparar consulta y ejecutar directamente:
+        $sql = $conn->query("SELECT * FROM agenda")->fetchAll();
+        // Recorrer todos los datos:
+        foreach($sql as $data){
+            echo "- " . $data['nombre'] . "\n";
+        }
+        
+        $conn = null;
+    ?>  
+
+* Borrar registros de la tabla:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Preparar consulta:
+        $sql = "DELETE FROM agenda WHERE id=1";
+        // ejecutar consulta:
+        $conn->exec($sql);
+
+        echo "Registro eliminado";
+
+        $con = null;
+    ?>  
+
+* Actualizar registros de la tabla:
+
+.. code:: php 
+
+    <?php 
+        $servidor = "localhost";
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        $base = "prueba";
+
+        $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Preparar consulta:
+        $sql = "UPDATE agenda SET nombre='Elvira', edad=32 WHERE id=2";
+        // preparar estado:
+        $stmt = $conn->prepare($sql);    
+        // ejecutar consulta:
+        $stmt->execute();
+
+        echo "Registro actualizado";
+
+        $con = null;
+    ?>  
+
+PDO y SQLite 3
+**************
+Podríamos trabajar perfectamente SQLite 3 con PDO pero para ello antes tenemos que asegurarnos de dos cosas:
+
+* Primero tenemos que instalar sqlite3 en nuestro sistema: ``sudo apt install php7.4-sqlite3``
+* Luego localizamos el archivo **php.ini** que suele estar en **/etc/php/7.4/ y dentro de las carpetas **apache2** y **cli** encontraremos estos archivos.
+* Editamos y buscamos las líneas que ponen ``;extension=pdo_sqlite`` y ``;extension=sqlite`` si tienen un **;** lo quitamos para habilitarlas.
+
+* Conectar a una base de datos SQLite 3:
+
+.. code:: php 
+
+    <?php 
+        // realizamos la conexion con el motor sqlite y apuntamos directamente a la base de datos:
+        $db = new PDO('sqlite:datos.sqlite');
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+        echo "Conexión realizada con éxito";
+        
+        $con = null;
+    ?>
+
 
 PHP CLI
 #######
