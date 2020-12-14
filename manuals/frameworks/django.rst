@@ -18,7 +18,7 @@ Esta es la documentación que he recopilado para trabajar con Django, un framewo
  
 Primeros Pasos 
 ##############  
-
+ 
 Creación del proyecto
 *********************
 

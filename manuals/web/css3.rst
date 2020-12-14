@@ -1,7 +1,7 @@
 ====
 CSS3 
 ====  
- 
+  
 .. image:: /logos/logo-css3.png
     :scale: 25%
     :alt: Logo CSS3

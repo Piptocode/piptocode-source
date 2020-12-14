@@ -24,7 +24,7 @@ Comentarios
 Los comentarios se pueden realizar de dos tipos:
 
 * Comentarios de una sola línea:
-
+ 
 .. code:: php
 
     // Comentario de una sola línea

@@ -18,7 +18,7 @@ Esta es la documentación que he recopilado para trabajar con C, un lenguaje cl�
 
 Elementos básicos del lenguaje
 ##############################
-
+ 
 Comentarios
 ***********
 Los comentarios se pueden realizar de dos tipos:

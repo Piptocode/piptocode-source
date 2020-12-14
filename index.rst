@@ -23,16 +23,9 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     :caption: Lenguajes de Programación:
     
     manuals/languages/python
-    manuals/languages/javascript
     manuals/languages/php
-    manuals/languages/sql
-    manuals/languages/mongodb 
     manuals/languages/c
     manuals/languages/cpp
-    manuals/languages/csharp
-    manuals/languages/dart
-    manuals/languages/java
-    manuals/languages/scratch
 
 .. toctree::
     :maxdepth: 2
@@ -40,49 +33,13 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
 
     manuals/frameworks/django
     manuals/frameworks/djangorest
-    manuals/frameworks/flask
-    manuals/frameworks/vue
-    manuals/frameworks/wordpress
-    manuals/frameworks/nodejs
-    manuals/frameworks/express
-    manuals/frameworks/electron
-    manuals/frameworks/cordova
-    manuals/frameworks/angular
-    manuals/frameworks/flutter
-    manuals/frameworks/laravel
-    manuals/frameworks/unity
 
 
 .. toctree::
     :maxdepth: 2
     :caption: Librerías de desarrollo:
-
-    manuals/librerias/bootstrap
-    manuals/librerias/jquery
-    manuals/librerias/jqueryui
-    manuals/librerias/fullcalendar
-    manuals/librerias/phaserjs
-    manuals/librerias/composer
-    manuals/librerias/html2pdf
-    manuals/librerias/phpmailer
-    manuals/librerias/docstrings
-    manuals/librerias/doctset
-    manuals/librerias/getpass
-    manuals/librerias/matplotlib
-    manuals/librerias/MIMEMultipart&smtplib
-    manuals/librerias/numpy
-    manuals/librerias/pandas
-    manuals/librerias/pillow
-    manuals/librerias/pipenv
-    manuals/librerias/pygame
-    manuals/librerias/recognizer
-    manuals/librerias/requests
-    manuals/librerias/seaborn
-    manuals/librerias/simplejson
-    manuals/librerias/speech_recognition
-    manuals/librerias/unittest    
-    manuals/librerias/tkinter   
-    manuals/librerias/gtk
+   
+    manuals/librerias/guizero 
 
 .. toctree::
     :maxdepth: 2
@@ -91,10 +48,6 @@ Estos manuales fueron creados entre otras cosas por interés personal y pueden s
     manuals/computer/linux
     manuals/computer/git
     manuals/computer/nginx
-    manuals/computer/raspberry
-    manuals/computer/arduinouno
-    manuals/computer/arduboy
-    manuals/computer/microbit
   
 
 Indices and tables

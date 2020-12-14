@@ -28,7 +28,7 @@ Los comentarios se pueden realizar de dos tipos:
 .. code:: Python
 
     # Comentario de una sola linea
-
+ 
 * Comentarios multilínea:
 
 .. code:: python

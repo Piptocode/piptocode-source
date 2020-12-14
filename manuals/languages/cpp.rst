@@ -925,7 +925,7 @@ La herencia en C++ se realizaría del siguiente modo:
 Manejo de errores
 #################
 El manejo de errores en C++ se realiza con **try** y **catch**:
-
+ 
 .. code:: cpp 
 
     #include <iostream>

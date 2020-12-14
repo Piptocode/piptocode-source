@@ -1,7 +1,7 @@
 =====
 HTML5 
 =====
- 
+  
 .. image:: /logos/logo-html5.png
     :scale: 25%
     :alt: Logo HTML5
